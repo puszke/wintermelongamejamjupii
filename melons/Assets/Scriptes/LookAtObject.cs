@@ -3,11 +3,12 @@ using UnityEngine;
 public class LookAtObject : MonoBehaviour
 {
     public Transform target;
+    public float moveSpeed = 1f;
 
     void Update()
     {
         Vector3 relativePos = target.position - transform.position;
         Quaternion toRotation = Quaternion.LookRotation(relativePos);
-        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1 * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, moveSpeed * Time.deltaTime);
     }
 }

@@ -30,9 +30,10 @@ public class RotateCamera : MonoBehaviour
     {
         isRotating = true;
 
-        // Pocz¹tkowy i koñcowy k¹t kamery :O
-        float startAngle = target.transform.eulerAngles.y;
-        float targetAngle = startAngle + angle;
+        // Pocz¹tkowy k¹t kamery (zachowujemy k¹t X, Y zmieniamy >:3)
+        Vector3 startRotation = target.transform.eulerAngles;
+        float startAngleY = startRotation.y;
+        float targetAngleY = startAngleY + angle;
 
         // Obs³uga interpolacji
         float elapsedTime = 0f;
@@ -42,15 +43,17 @@ public class RotateCamera : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
 
-            // Interpolacja k¹ta
-            float currentAngle = Mathf.Lerp(startAngle, targetAngle, elapsedTime / duration);
-            target.transform.rotation = Quaternion.Euler(0, currentAngle, 0);
+            // Interpolacja k¹ta w osi Y
+            float currentAngleY = Mathf.Lerp(startAngleY, targetAngleY, elapsedTime / duration);
+
+            // Ustawianie nowego k¹ta rotacji, zachowuj¹c k¹t X i Z!!! Yupie!!!
+            target.transform.rotation = Quaternion.Euler(startRotation.x, currentAngleY, startRotation.z);
 
             yield return null;
         }
 
-        // Ustawienie dok³adnego k¹ta na koniec
-        target.transform.rotation = Quaternion.Euler(0, targetAngle, 0);
+        // Ustawienie dok³adnego k¹ta na koniec :3
+        target.transform.rotation = Quaternion.Euler(startRotation.x, targetAngleY, startRotation.z);
         isRotating = false;
     }
 }
