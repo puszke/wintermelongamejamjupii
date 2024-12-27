@@ -129,6 +129,8 @@ GameObject:
   m_Component:
   - component: {fileID: 424302833}
   - component: {fileID: 424302834}
+  - component: {fileID: 424302835}
+  - component: {fileID: 424302836}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -166,6 +168,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 160
   rotationAngle: 45
+--- !u!114 &424302835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424302832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9538e11fc5bf36c4eaebe5d25b5b7849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  mousePositionOnMap: {x: 0, y: 0, z: 0}
+  isOnTerrain: 0
+--- !u!114 &424302836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424302832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7939b4139ebb6e1449bdc7214ca9d465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balls: {fileID: 888342969}
+  pointer: {fileID: 424302835}
+  ZoomedIn: 12
+  ZoomedOut: 30
 --- !u!1 &491246354
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +527,7 @@ GameObject:
   - component: {fileID: 888342967}
   - component: {fileID: 888342966}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Balls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -600,7 +635,7 @@ GameObject:
   - component: {fileID: 891539267}
   - component: {fileID: 891539266}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,7 +847,7 @@ GameObject:
   - component: {fileID: 1139395492}
   - component: {fileID: 1139395494}
   - component: {fileID: 1139395493}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
