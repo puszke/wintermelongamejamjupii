@@ -31,11 +31,18 @@ public class Bears : MonoBehaviour
         float z = Random.Range(5, 55);
         rnd = new Vector3(x, 2, z);
     }
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(collision.transform.tag=="Player")
+        {
+            GetComponent<Animator>().SetTrigger("Dead");
+            Destroy(this);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        
-
+      
         //GetComponent<Animator>().speed = 2;
         Vector3 targetPostition = new Vector3(rnd.x,
         this.transform.position.y,

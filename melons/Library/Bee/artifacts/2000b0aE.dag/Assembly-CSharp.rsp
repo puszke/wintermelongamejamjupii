@@ -376,6 +376,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.32f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Scriptes/BallAp.cs"
 "Assets/Scriptes/Bears.cs"
+"Assets/Scriptes/BlackRed.cs"
 "Assets/Scriptes/ChangeSceneButton.cs"
 "Assets/Scriptes/CreditsButton.cs"
 "Assets/Scriptes/Deleterinator.cs"

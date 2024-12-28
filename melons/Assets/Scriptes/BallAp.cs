@@ -57,15 +57,15 @@ public class BallAp : MonoBehaviour
         }
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 4, pointMask))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 2, pointMask))
         {
-            endPoint = hit.transform == null;
             Debug.Log(transform.name + " " + hit.transform.root.name);
         }
-        if (Physics.Raycast(transform.position, -transform.forward, out hit, 4, pointMask))
+        endPoint = hit.transform == null;
+        if (Physics.Raycast(transform.position, -transform.forward, out hit, 2, pointMask))
         {
-            startPoint = hit.transform == null;
         }
+        startPoint = hit.transform == null;
 
 
     }
