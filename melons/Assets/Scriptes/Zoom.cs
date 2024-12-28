@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Zoom : MonoBehaviour
 {
+    /// 
+    /// TOTALNIE PUSZKE TU BY£ W DNIU 28.12.2024 o 18:32 :3 komentarze w """ s¹ jego!!
+    /// 
     Vector3 defaultPosition;       // Domyœlna pozycja obiektu Balls
     public Transform balls;        // Ballsy!!! potrzebne bardzo do ustawienia!!!
     public Pointer pointer;        // Skrypt Pointer, potrzebne bardzo do ustawienia w editorze!!! 
@@ -12,7 +15,7 @@ public class Zoom : MonoBehaviour
 
     private Vector3 targetPosition; // Docelowa pozycja Balls!!! potrzebna do animacji >.<
     private float targetZoom;       // Docelowa wartoœæ zoomu, te¿ potrzebna do animacji!!! >///<
-    private bool isZooming = false; // Bulion, aby wiedzieæ czy nadal animacja zooma siê robi czy nie >:3 (nie ma tutaj buliona od stanu przybli¿enia, przeproszka >.<!!!)
+    private bool isZooming = false; // Bulion, aby wiedzieæ czy nadal animacja zooma siê robi czy nie >:3 (nie ma tutaj buliona od stanu przybli¿enia, przeproszka >.<!!!) "<333333"
  
     private void Start()
     {
@@ -25,14 +28,14 @@ public class Zoom : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(1) && pointer.isOnTerrain)
+        if ((Input.GetMouseButton(1)||Input.GetKey(KeyCode.LeftShift) && pointer.isOnTerrain))
         {
             // Ustawiamy docelowo gdzie ma siê przybli¿yæ gdy klikniemy myszk¹ prawym przyciskiem >:3
             targetPosition = pointer.mousePositionOnMap;
             targetZoom = ZoomedIn;
             isZooming = true;
         }
-        else if (Input.GetMouseButtonUp(1))
+        else if (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.LeftShift))
         {
             // I to samo, ale na odwrót, docelowy powrót do domyœlnych wartoœci - takie ustawianko w³aœnie :3
             targetPosition = defaultPosition;
@@ -46,7 +49,7 @@ public class Zoom : MonoBehaviour
         // P³ynne przejœcie zoomu kamery!!! tak o!!! ca³e kradzione!!! Lerp larpowany jest tak o!! >:3
         Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, targetZoom, Time.deltaTime * zoomSpeed);
 
-        // Zakañczanie animacji gdy obiekt jest blisko do animacji, coœ tam coœ tam, tak musi po prostu byæ, mnie nie pytaj!!! x3
+        // Zakañczanie animacji gdy obiekt jest blisko do animacji, coœ tam coœ tam, tak musi po prostu byæ, mnie nie pytaj!!! x3 "nie pytam x3"
         if (Vector3.Distance(balls.position, targetPosition) < 0.01f &&
             Mathf.Abs(Camera.main.orthographicSize - targetZoom) < 0.01f)
         {

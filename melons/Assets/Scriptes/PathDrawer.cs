@@ -14,6 +14,8 @@ public class PathDrawer : MonoBehaviour
     public Pointer pointer;
     public PathManager pathManager;
 
+    private int trailNum = 0;
+
     void Update()
     {
 
@@ -73,6 +75,8 @@ public class PathDrawer : MonoBehaviour
     void CreatePoint(Vector3 position)
     {
         GameObject newPoint = Instantiate(pointPrefab, position, Quaternion.identity);
+        newPoint.transform.name = trailNum.ToString();
+        trailNum++;
         points.Add(newPoint);
     }
 

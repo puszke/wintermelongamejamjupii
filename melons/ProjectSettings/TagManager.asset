@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Path
   - fajny
+  - TRAIL
   layers:
   - Default
   - TransparentFX
