@@ -385,6 +385,7 @@
 "Assets/Scriptes/Pointer.cs"
 "Assets/Scriptes/RotateCamera.cs"
 "Assets/Scriptes/TrackShow.cs"
+"Assets/Scriptes/TrainController.cs"
 "Assets/Scriptes/Zoom.cs"
 -langversion:9.0
 /deterministic

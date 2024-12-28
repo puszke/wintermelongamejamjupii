@@ -4,7 +4,9 @@ using UnityEngine;
 public class BallAp : MonoBehaviour
 {
 
-    public bool startPoint=true,endPoint = true;
+    public bool startPoint = true, endPoint = true;
+
+    public bool wasVisited = false;
 
     public LayerMask pointMask;
 
@@ -18,6 +20,18 @@ public class BallAp : MonoBehaviour
         gameObject.layer = 11;
         GetComponent<SphereCollider>().enabled = true;
 
+    }
+
+    IEnumerator ballsTwo()
+    {
+        wasVisited = true;
+        yield return new WaitForSeconds(1f);
+        wasVisited = false;
+    }
+
+    public void VisitingTrack()
+    {
+        StartCoroutine(ballsTwo());
     }
 
 
@@ -46,11 +60,13 @@ public class BallAp : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out hit, 4, pointMask))
         {
             endPoint = hit.transform == null;
-            Debug.Log(transform.name+ " " + hit.transform.root.name);
+            Debug.Log(transform.name + " " + hit.transform.root.name);
         }
         if (Physics.Raycast(transform.position, -transform.forward, out hit, 4, pointMask))
         {
             startPoint = hit.transform == null;
         }
+
+
     }
 }
