@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class Pointer : MonoBehaviour
 {
+
     public LayerMask terrainLayer; // layer który jest fajny do sprawdzania myszy :3
     public Vector3 mousePositionOnMap; //POZYCJA MYSKI >:3
 
     public bool isOnTerrain = false;
+    public bool isOnPoint = false;
 
     void Update()
     {
@@ -17,11 +19,22 @@ public class Pointer : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, terrainLayer))
         {
             mousePositionOnMap = hit.point; //aktualizuje informacje gdzie jest myszka, w zale¿noœci gdzie trafi³ raycast :<
-            isOnTerrain = true;
+            if (hit.transform.root.tag == "Path")
+            {
+                isOnPoint = true;
+                GetComponent<PathDrawer>().StopDrawing();
+            }
+            else
+            {
+                isOnTerrain = true;
+                isOnPoint = false;
+            }
+
         }
         else
         {
             isOnTerrain = false;
+            isOnPoint = false;
         }
     }
 }
