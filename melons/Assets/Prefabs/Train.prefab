@@ -4964,6 +4964,7 @@ GameObject:
   - component: {fileID: 9131805434583659957}
   - component: {fileID: 3438064373639449874}
   - component: {fileID: 9215178893888800599}
+  - component: {fileID: 3707042205525094611}
   m_Layer: 0
   m_Name: Train
   m_TagString: Player
@@ -5061,6 +5062,18 @@ MonoBehaviour:
   explosion: {fileID: 8964173142619590046, guid: 70d58a392089e45469c67b07c4e3584b, type: 3}
   derailed: 0
   isRiding: 0
+--- !u!114 &3707042205525094611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5281393616623001414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7d7ef642d298d4cbb2f9ee232bd936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6813302459786713886
 GameObject:
   m_ObjectHideFlags: 0

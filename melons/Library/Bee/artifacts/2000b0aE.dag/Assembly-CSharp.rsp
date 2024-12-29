@@ -387,12 +387,14 @@
 "Assets/Scriptes/PathManager.cs"
 "Assets/Scriptes/Pointer.cs"
 "Assets/Scriptes/RotateCamera.cs"
+"Assets/Scriptes/SourceIsStillBeating.cs"
 "Assets/Scriptes/Stations.cs"
 "Assets/Scriptes/Town.cs"
 "Assets/Scriptes/TrackShow.cs"
 "Assets/Scriptes/TracksSlider.cs"
 "Assets/Scriptes/TrailNumberShowText.cs"
 "Assets/Scriptes/TrainController.cs"
+"Assets/Scriptes/TrainStatus.cs"
 "Assets/Scriptes/Zoom.cs"
 -langversion:9.0
 /deterministic

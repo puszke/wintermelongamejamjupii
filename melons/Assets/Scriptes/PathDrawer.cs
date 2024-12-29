@@ -110,7 +110,7 @@ public class PathDrawer : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hitInfo, pathLayer))
         {
             currentTag = hitInfo.transform.tag;
-            Debug.Log(currentTag);
+            //Debug.Log(currentTag);
             return hitInfo.point;
         }
         return Vector3.zero;

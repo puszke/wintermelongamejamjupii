@@ -71,7 +71,7 @@ public class TrainController : MonoBehaviour
         if (direction.magnitude > 0.1f)
         {
             // Przesuwanie w stronê pozycji toru
-            Vector3 targetPosition = new Vector3(currentTrack.position.x, transform.position.y, currentTrack.position.z);
+            Vector3 targetPosition = new Vector3(currentTrack.position.x, currentTrack.position.y + 2f, currentTrack.position.z);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
             if (rightOrder)
@@ -95,7 +95,7 @@ public class TrainController : MonoBehaviour
             currentTrack = null; // Lokomotywa dotar³a do aktualnego toru
         }
     }
-    void Derail()
+    public void Derail()
     {
         Debug.Log("Train derailed! No tracks ahead.");
         derailed = true;
