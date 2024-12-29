@@ -20,7 +20,7 @@ public class SourceIsStillBeating : MonoBehaviour
 
     private Action<GameObject> objectAction; // Akcja któr¹ bêdzie wykonywa³ nasz obiekt >///<
 
-    public float detectionRadius = 6f;
+    public float detectionRadius = 10f;
     bool cooldown = false;
     public float delay = 6f;
 
@@ -45,7 +45,7 @@ public class SourceIsStillBeating : MonoBehaviour
     private void DetectTrain()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
+        
         foreach (GameObject player in players)
         {
 
@@ -181,10 +181,6 @@ public class SourceIsStillBeating : MonoBehaviour
         {
             station.OnTrainEntered += DetectStation;
             enabled = false;
-        }
-        else
-        {
-            enabled = true;
         }
 
     }
