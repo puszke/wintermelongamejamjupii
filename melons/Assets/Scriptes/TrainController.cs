@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class TrainController : MonoBehaviour
 {
+
+    public string COLOR = "RED";
+
     public float speed = 5f; // Prêdkoœæ poruszania siê lokomotywy
     public Transform frontDetector; // Punkt wykrywaj¹cy kolejne tory
     public float detectionRadius = 0.5f; // Promieñ wykrywania torów
@@ -13,20 +16,29 @@ public class TrainController : MonoBehaviour
 
     public bool rightOrder = true;
 
+    public GameObject explosion;
+
+    public bool derailed = false;
+
+    public bool isRiding = false;
+
     void Update()
     {
-        if (currentTrack == null)
+        if (!derailed && isRiding)
         {
-            DetectNextTrack();
-        }
+            if (currentTrack == null)
+            {
+                DetectNextTrack();
+            }
 
-        if (currentTrack != null)
-        {
-            MoveAlongTrack();
-        }
-        else
-        {
-            Derail();
+            if (currentTrack != null)
+            {
+                MoveAlongTrack();
+            }
+            else
+            {
+                Derail();
+            }
         }
     }
 
@@ -86,7 +98,10 @@ public class TrainController : MonoBehaviour
     void Derail()
     {
         Debug.Log("Train derailed! No tracks ahead.");
+        derailed = true;
+        GameObject skibidiwybuch = Instantiate(explosion, transform.position, Quaternion.identity);
         // Mo¿esz dodaæ tutaj logikê obs³ugi wykolejenia, np. zatrzymanie poci¹gu czy wyœwietlenie komunikatu
+
     }
 
     private void OnDrawGizmos()

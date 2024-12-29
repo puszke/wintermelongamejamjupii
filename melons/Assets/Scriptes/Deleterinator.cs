@@ -14,6 +14,7 @@ public class Deleterinator : MonoBehaviour
 
             if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("fajny").transform.position) < 3f)
             {
+                GlobalTrailManager.instance.trailNum++;
                 Destroy(gameObject); // Usuwa bie¿¹cy obiekt 
 
             }

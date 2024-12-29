@@ -7,6 +7,9 @@ TagManager:
   - Path
   - fajny
   - TRAIL
+  - CANTBUILD
+  - Buildable
+  - Town
   layers:
   - Default
   - TransparentFX

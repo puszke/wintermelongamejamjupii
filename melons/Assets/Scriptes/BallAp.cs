@@ -43,6 +43,10 @@ public class BallAp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!startPoint && !endPoint)
+        {
+
+        }
         if (startPoint)
         {
             transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);

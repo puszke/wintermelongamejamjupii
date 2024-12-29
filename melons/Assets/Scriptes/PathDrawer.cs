@@ -16,12 +16,15 @@ public class PathDrawer : MonoBehaviour
 
     private int trailNum = 0;
 
+    private string currentTag = "";
+
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&&!Input.GetKey(KeyCode.LeftShift)&&GlobalTrailManager.instance.trailNum>0 )
         {
             StartDrawing();
+            
         }
         else if (Input.GetMouseButton(0) && isDrawing)
         {
@@ -39,8 +42,9 @@ public class PathDrawer : MonoBehaviour
         isDrawing = true;
         Vector3 startPosition = GetMouseWorldPosition();
 
-        if (pointer.isOnTerrain && !pointer.isOnPoint)
+        if (pointer.isOnTerrain && !pointer.isOnPoint && currentTag == "Buildable")
         {
+            GlobalTrailManager.instance.trailNum--;
             CreatePoint(startPosition);
             lastPointPosition = startPosition;
         }
@@ -56,11 +60,15 @@ public class PathDrawer : MonoBehaviour
         Vector3 currentPosition = GetMouseWorldPosition();
         //Debug.Log(currentPosition);
 
-        if (Vector3.Distance(lastPointPosition, currentPosition) >= minDistance && pointer.isOnTerrain && !pointer.isOnPoint)
+        if (Vector3.Distance(lastPointPosition, currentPosition) >= minDistance && pointer.isOnTerrain && !pointer.isOnPoint )
         {
-            CreatePoint(currentPosition);
-            RotatePreviousPoint(currentPosition);
-            lastPointPosition = currentPosition;
+            if (GlobalTrailManager.instance.trailNum > 0 && currentTag == "Buildable")
+            {
+                GlobalTrailManager.instance.trailNum--;
+                CreatePoint(currentPosition);
+                RotatePreviousPoint(currentPosition);
+                lastPointPosition = currentPosition;
+            }
         }
 
     }
@@ -101,6 +109,8 @@ public class PathDrawer : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hitInfo, pathLayer))
         {
+            currentTag = hitInfo.transform.tag;
+            Debug.Log(currentTag);
             return hitInfo.point;
         }
         return Vector3.zero;
