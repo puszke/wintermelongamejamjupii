@@ -387,6 +387,7 @@
 "Assets/Scriptes/PathManager.cs"
 "Assets/Scriptes/Pointer.cs"
 "Assets/Scriptes/RotateCamera.cs"
+"Assets/Scriptes/SawMover.cs"
 "Assets/Scriptes/SourceIsStillBeating.cs"
 "Assets/Scriptes/Stations.cs"
 "Assets/Scriptes/Town.cs"
