@@ -5,7 +5,7 @@ using UnityEngine;
 public class Station : MonoBehaviour
 {
     public int trailsAvailable = 100; // Liczba torów dostêpnych do dodania przez stacjê
-    public float detectionRadius = 2f; // Promieñ wykrywania poci¹gów
+    public float detectionRadius = 3f; // Promieñ wykrywania poci¹gów
     public bool infinity = false;
     public int maxUses = 1; // Maksymalna liczba u¿yæ stacji
 
@@ -25,6 +25,8 @@ public class Station : MonoBehaviour
     private void Start()
     {
         icon.SetActive(false); // Ukryj ikonê na pocz¹tku
+        GetComponent<BoxCollider>().enabled = false;
+
     }
 
     private void Update()
@@ -51,8 +53,11 @@ public class Station : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, player.transform.position) < detectionRadius)
             {
-                CaptureTrain(player);
-                VisitStation();
+                if (!player.GetComponent<TrainController>().derailed)
+                {
+                    CaptureTrain(player);
+                    VisitStation();
+                }
 
                 break;
             }
@@ -80,7 +85,7 @@ public class Station : MonoBehaviour
                     }
 
                     currentUses++;
-                    shouldShowing= true;
+                    shouldShowing= GetComponent<BoxCollider>().enabled = true;
                     isUsed = true; // Oznacz stacjê jako u¿ywan¹
                     OnTrainEntered?.Invoke();
                 }
@@ -122,7 +127,7 @@ public class Station : MonoBehaviour
             }
 
             trainAtStation = null; // Usuñ referencjê do poci¹gu
-            shouldShowing= false;
+            shouldShowing = GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(BallsThree(delay)); // Oznacz stacjê jako woln¹
 
             
@@ -131,9 +136,7 @@ public class Station : MonoBehaviour
 
     IEnumerator BallsThree(float time)
     {
-        GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(time);
-        GetComponent<BoxCollider>().enabled = true;
         isUsed = false;
     }
 

@@ -29,7 +29,7 @@ public class SourceIsStillBeating : MonoBehaviour
 
 
     //public bool destructable = true; // Bardzo konkretna zmienna, tyczy siê tylko przeszkód --- jednak nie, zostawiam ten pomys³ na póŸniej x3
-
+    public int temperaturedestruciontreshold = 0;
     private int myTemperature = 0;
     private int myElectricCharge = 0;
 
@@ -53,7 +53,7 @@ public class SourceIsStillBeating : MonoBehaviour
             {
 
                 //Tutaj dochodzi do interakcji, je¿eli poci¹g zbli¿y siê do obiektu
-                if (!cooldown)
+                if (!cooldown && player.GetComponent<TrainController>().isRiding)
                 {
                     objectAction?.Invoke(player);
                     cooldown = true;
@@ -66,6 +66,7 @@ public class SourceIsStillBeating : MonoBehaviour
 
     private void DetectStation()
     {
+        Debug.Log(gameObject.name);
         objectAction?.Invoke(station.trainAtStation);
     }
     
@@ -92,7 +93,10 @@ public class SourceIsStillBeating : MonoBehaviour
         if (train.GetComponent<TrainStatus>().temperature > 1)
         {
             //mo¿na najpierw daæ jak¹œ animacje, albo coœ innego~ póki co przeszkoda po prostu umiera x3
-            train.GetComponent<TrainController>().Derail();
+            if (!train.GetComponent<TrainController>().derailed)
+            {
+                train.GetComponent<TrainController>().Derail();
+            }
         }
     }
     void ColdSourceAction(GameObject train)
@@ -101,13 +105,16 @@ public class SourceIsStillBeating : MonoBehaviour
         if (train.GetComponent<TrainStatus>().temperature < -1)
         {
             //mo¿na najpierw daæ jak¹œ animacje, albo coœ innego~ póki co przeszkoda po prostu umiera x3
-            train.GetComponent<TrainController>().Derail();
+            if (!train.GetComponent<TrainController>().derailed)
+            {
+                train.GetComponent<TrainController>().Derail();
+            }
         }
     }
     void HeatObstacleAction(GameObject train)
     {
         //Gor¹ca przeszkoda jest pokonywana zimnem!!!
-        if(train.GetComponent<TrainStatus>().temperature < 0)
+        if(train.GetComponent<TrainStatus>().temperature < -temperaturedestruciontreshold)
         {
             //mo¿na najpierw daæ jak¹œ animacje, albo coœ innego~ póki co przeszkoda po prostu umiera x3
             Destroy(gameObject);
@@ -116,7 +123,7 @@ public class SourceIsStillBeating : MonoBehaviour
     void ColdObstacleAction(GameObject train)
     {
         //Zimna przeszkoda jest pokonywana Gor¹cem!!!
-        if (train.GetComponent<TrainStatus>().temperature > 0)
+        if (train.GetComponent<TrainStatus>().temperature > temperaturedestruciontreshold)
         {
             //mo¿na najpierw daæ jak¹œ animacje, albo coœ innego~ póki co przeszkoda po prostu umiera x3
             Destroy(gameObject);

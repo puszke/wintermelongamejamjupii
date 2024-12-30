@@ -16,6 +16,8 @@ public class TrainController : MonoBehaviour
 
     public bool rightOrder = true;
 
+    public bool isImportant = true;
+
     public GameObject explosion;
 
     public bool derailed = false;
@@ -39,6 +41,15 @@ public class TrainController : MonoBehaviour
             {
                 Derail();
             }
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "thedeath" && !derailed)
+        {
+            Derail();
         }
     }
 

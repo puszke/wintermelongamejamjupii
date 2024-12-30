@@ -10,6 +10,7 @@ TagManager:
   - CANTBUILD
   - Buildable
   - Town
+  - thedeath
   layers:
   - Default
   - TransparentFX

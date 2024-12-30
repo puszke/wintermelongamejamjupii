@@ -9,8 +9,8 @@ public class Deleterinator : MonoBehaviour
 
         if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift)) // Lewy przycisk myszy
         {
-            Debug.Log("Ja");
-            Debug.Log(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("fajny").transform.position));
+            
+            //Debug.Log(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("fajny").transform.position));
 
             if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("fajny").transform.position) < 3f)
             {

@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
     {
         foreach(GameObject p in GameObject.FindGameObjectsWithTag("Player"))
         {
-            if(p.GetComponent<TrainController>().derailed)
+            if(p.GetComponent<TrainController>().derailed && p.GetComponent<TrainController>().isImportant)
             {
                 GameOver = true;
             }
