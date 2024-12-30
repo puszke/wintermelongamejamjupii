@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public int level = 0;
@@ -15,8 +15,8 @@ public class LevelManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        LoadLevel();
         level = PlayerPrefs.GetInt("level");
+        LoadLevel();
 
     }
 
@@ -32,6 +32,7 @@ public class LevelManager : MonoBehaviour
         level++;
         PlayerPrefs.SetInt("level", level);
         LoadLevel();
+        SceneManager.LoadScene("SampleScene");
     }
 
     IEnumerator WaitToWin()
@@ -43,6 +44,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(PlayerPrefs.GetInt("level"));
         foreach(GameObject p in GameObject.FindGameObjectsWithTag("Player"))
         {
             if(p.GetComponent<TrainController>().derailed && p.GetComponent<TrainController>().isImportant)
@@ -63,6 +65,15 @@ public class LevelManager : MonoBehaviour
             {
                 StartCoroutine(WaitToWin());
             }
+        }
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            PlayerPrefs.SetInt("level", 0);
+            LoadLevel();
         }
     }
 }

@@ -5078,6 +5078,9 @@ MonoBehaviour:
   temperature: 0
   electricCharge: 0
   influenceSphere: 5
+  iceMat: {fileID: 2100000, guid: 5ba769a860502474d9fad909af2c5309, type: 2}
+  fireMat: {fileID: 2100000, guid: aa79548f858ef8a4fa2cc5d15a12ac6e, type: 2}
+  train: {fileID: 3035105496860691669}
 --- !u!1 &6813302459786713886
 GameObject:
   m_ObjectHideFlags: 0

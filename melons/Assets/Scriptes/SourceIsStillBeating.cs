@@ -27,6 +27,9 @@ public class SourceIsStillBeating : MonoBehaviour
     public bool isAStation = false;
     public Station station = null;
 
+    public GameObject visualiser;
+    public GameObject fire, ice;
+    public Material iceMat;
 
     //public bool destructable = true; // Bardzo konkretna zmienna, tyczy siê tylko przeszkód --- jednak nie, zostawiam ten pomys³ na póŸniej x3
     public int temperaturedestruciontreshold = 0;
@@ -40,6 +43,9 @@ public class SourceIsStillBeating : MonoBehaviour
     void Update()
     {
         DetectTrain();
+        
+        float scale = detectionRadius * 2; // Promieñ to po³owa œrednicy, st¹d * 2
+        visualiser.transform.localScale = new Vector3(scale, scale, scale);
     }
 
     private void DetectTrain()
@@ -152,6 +158,10 @@ public class SourceIsStillBeating : MonoBehaviour
     private void Start()
     {
         CheckWhatAmI();
+        fire.SetActive(WhatIsIt == SourceType.HeatSource);
+        ice.SetActive(WhatIsIt == SourceType.ColdSource);
+        if(WhatIsIt == SourceType.ColdSource)
+            visualiser.GetComponent<MeshRenderer>().material = iceMat;
     }
 
     public void CheckWhatAmI()
