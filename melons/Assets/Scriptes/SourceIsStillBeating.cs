@@ -29,7 +29,7 @@ public class SourceIsStillBeating : MonoBehaviour
 
 
     //public bool destructable = true; // Bardzo konkretna zmienna, tyczy siê tylko przeszkód --- jednak nie, zostawiam ten pomys³ na póŸniej x3
-    public int temperaturedestruciontreshold = 0;
+    public int temperaturedestruciontreshold = 0; //du¿a zmiana!!!! (!!!!) - jak nie dzia³a nagle kod to przez to :3
     private int myTemperature = 0;
     private int myElectricCharge = 0;
 
